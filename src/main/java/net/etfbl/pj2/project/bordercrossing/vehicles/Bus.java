@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Bus implements Vehicle{
-    private String name;
+    final private String name;
     private static int ID = 1;
     private ArrayList<Passenger> passengers = new ArrayList<>();
     private boolean hasPoliceProblem = false;
@@ -108,7 +108,8 @@ public class Bus implements Vehicle{
                     transition.play();
 
                 }
-            } else {
+            } else
+            {
                 transition.setByX(-1000);
                 this.setX(-1000);
                 transition.play();
