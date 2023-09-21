@@ -50,6 +50,16 @@ public class PoliceTerminal {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            if(Main.paused)
+            {
+                synchronized (Simulation.obj3) {
+                    try {
+                        Simulation.obj3.wait(); // Čekaj dok se ne dobije notify
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
         }
 
     }
@@ -79,6 +89,16 @@ public class PoliceTerminal {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            }
+            if(Main.paused)
+            {
+                synchronized (Simulation.obj3) {
+                    try {
+                        Simulation.obj3.wait(); // Čekaj dok se ne dobije notify
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
         }
         if(car.getPoliceProblem()) {
@@ -114,6 +134,16 @@ public class PoliceTerminal {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            }
+            if(Main.paused)
+            {
+                synchronized (Simulation.obj3) {
+                    try {
+                        Simulation.obj3.wait(); // Čekaj dok se ne dobije notify
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
         }
         if(bus.getPoliceProblem()) {

@@ -7,6 +7,7 @@ public interface Vehicle extends Runnable{
     public void run();
     public void draw();
     public ImageView getImage();
+    public String vehicleInformation();
     public int getX();
     public int getY();
     public void setX(int x);

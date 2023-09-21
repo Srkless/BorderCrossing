@@ -37,6 +37,16 @@ public class CustomsTerminal {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            if(Main.paused)
+            {
+                synchronized (Simulation.obj3) {
+                    try {
+                        Simulation.obj3.wait(); // Čekaj dok se ne dobije notify
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
         }
         if(!truck.getPoliceProblem())
         {
@@ -61,6 +71,16 @@ public class CustomsTerminal {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        if(Main.paused)
+        {
+            synchronized (Simulation.obj3) {
+                try {
+                    Simulation.obj3.wait(); // Čekaj dok se ne dobije notify
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
 
         Simulation.vehiclesOnCustomsTerminal.remove(0);
     }
@@ -83,6 +103,16 @@ public class CustomsTerminal {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            }
+            if(Main.paused)
+            {
+                synchronized (Simulation.obj3) {
+                    try {
+                        Simulation.obj3.wait(); // Čekaj dok se ne dobije notify
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
         }
         Simulation.vehiclesOnCustomsTerminal.remove(0);
